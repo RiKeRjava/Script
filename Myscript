@@ -1,1 +1,1 @@
-echo "ok"
+ansible-playbook demo-project
