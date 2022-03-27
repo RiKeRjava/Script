@@ -1,24 +1,38 @@
-version: '3'
+version: "3"
+
 services:
-  devbox:
+
+  php-apache-environment:
+    container_name: php-apache
     build:
       context: ./
-      dockerfile: DevBox.DockerFile
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - /path/of/my/local/filesystem:/path/to/mount/into/containers/filesystem
-  devmysql:
+        dockerfile: DevBox.DockerFile
+      depends_on:
+        - db
+      ports:
+        - 8000:80
+
+  mysql:
+    container_name: mysql
     build:
       context: ./
-      dockerfile: MySQLDev.DockerFile
-    ports:
-      - "3306:3306"
+        dockerfile: MySQLDev.DockerFile
+       ports:
+        - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: ''
-      MYSQL_ALLOW_EMPTY_PASSWORD : 'yes'
-    restart: always
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: testdb
+      MYSQL_USER: test_user
+      MYSQL_PASSWORD: test_pass
     volumes:
-            - /database/path/of/my/local/filesystem:/database/path/to/mount/into/containers/filesystem
+       - ./databases/mysql:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+     ports:
+       - 127.0.0.1:8080:80
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: test_user
+      PMA_PASSWORD: test_pass
 

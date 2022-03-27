@@ -1,3 +1,3 @@
-FROM mysql:5.7.25
+FROM mysql:latest
 ENV MYSQL_ALLOW_EMPTY_PASSWORD='yes'
 EXPOSE 3306
