@@ -1,34 +1,23 @@
-version: "3"
+version: "3.6"
 
 services:
 
-  php-apache-environment:
-    container_name: php-apache
-    build:
-      context: DevBox.DockerFile
+  mariadb:
+    image: mariadb:10.4
     ports:
-        - 127.0.0.1:80:80
-
-  mysql:
-    container_name: mysql
-    build:
-      context: MySQL.DockerFile
-    ports:
-        - 127.0.0.1:3306:3306
+    - 3306:3306
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: rootroot
       MYSQL_DATABASE: testdb
       MYSQL_USER: test_user
       MYSQL_PASSWORD: test_pass
     volumes:
-       - ./databases/mysql:/var/lib/mysql
+    - ./databases/mariadb:/var/lib/mysql
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
+  php:
+    build:
+      context: DevBox.DockerFile
     ports:
-       - 127.0.0.1:8080:80
-    environment:
-      PMA_HOST: mysql
-      PMA_USER: test_user
-      PMA_PASSWORD: test_pass
-
+      - 80:80
+   link:
+      - mariadb
