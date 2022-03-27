@@ -5,20 +5,16 @@ services:
   php-apache-environment:
     container_name: php-apache
     build:
-      context: ./
-        dockerfile: DevBox.DockerFile
-      depends_on:
-        - db
-      ports:
-        - 8000:80
+      context: DevBox.DockerFile
+    ports:
+        - 127.0.0.1:80:80
 
   mysql:
     container_name: mysql
     build:
-      context: ./
-        dockerfile: MySQLDev.DockerFile
-       ports:
-        - "3306:3306"
+      context: MySQL.DockerFile
+    ports:
+        - 127.0.0.1:3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: testdb
@@ -29,7 +25,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
-     ports:
+    ports:
        - 127.0.0.1:8080:80
     environment:
       PMA_HOST: mysql
