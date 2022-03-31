@@ -15,11 +15,14 @@ services:
         - db:/var/lib/mysql
 
   php-apache:
-    image: php:8.0-apache
+    build:
+      context: php
     ports:
       - 81:81
     links:
       - 'db'
+
+  
 
 volumes:
    db:
