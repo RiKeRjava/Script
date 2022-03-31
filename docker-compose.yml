@@ -5,7 +5,7 @@ services:
   db:
     image: mariadb
     ports:
-      - 3808:3808
+      - 3606:3606
     environment:
       MARIADB_ROOT_PASSWORD: rootroot
       MARIADB_DATABASE: testdb
