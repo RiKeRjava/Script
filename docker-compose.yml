@@ -5,14 +5,21 @@ services:
   db:
     image: mariadb
     ports:
-      - 3306:3306
+      - 3808:3808
     environment:
       MARIADB_ROOT_PASSWORD: rootroot
       MARIADB_DATABASE: testdb
       MARIADB_USER: test_user
       MARIADB_PASSWORD: test_pass
+    volumes:
+        - db:/var/lib/mysql
 
   php-apache:
     image: php:8.0-apache
     ports:
       - 81:81
+    links:
+      - 'db'
+
+volumes:
+   db:
