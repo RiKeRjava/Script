@@ -2,22 +2,17 @@ version: "3.6"
 
 services:
 
-  mariadb:
-    image: mariadb:10.4
+  db:
+    image: mariadb
     ports:
-    - 3306:3306
+      - 3306:3306
     environment:
-      MYSQL_ROOT_PASSWORD: rootroot
-      MYSQL_DATABASE: testdb
-      MYSQL_USER: test_user
-      MYSQL_PASSWORD: test_pass
-    volumes:
-    - ./databases/mariadb:/var/lib/mysql
+      MARIADB_ROOT_PASSWORD: rootroot
+      MARIADB_DATABASE: testdb
+      MARIADB_USER: test_user
+      MARIADB_PASSWORD: test_pass
 
-  php:
-    build:
-      context: DevBox.DockerFile
+  php-apache:
+    image: php:8.0-apache
     ports:
-      - 80:80
-   link:
-      - mariadb
+      - 81:81
