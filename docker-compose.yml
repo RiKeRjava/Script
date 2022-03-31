@@ -22,7 +22,5 @@ services:
     links:
       - 'db'
 
-  
-
 volumes:
    db:
