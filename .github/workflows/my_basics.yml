@@ -9,7 +9,6 @@ on:
 
 jobs:
   my_testing:
-  
     runs-on: ubuntu-latest
 
     steps:
@@ -18,7 +17,7 @@ jobs:
         
   my_deploy:
     runs-on: ubuntu-lates
-    needs: [my_testing]
+    needs: my_testing
     
     steps: 
       - name: Print Hello Message in Deploy
