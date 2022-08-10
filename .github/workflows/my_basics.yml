@@ -52,7 +52,6 @@ jobs:
         env:
           LOCAL_VAR: "This is super local Environment veriables"
           
-        
       - name: Printing Deployment Package
         run: echo "Deploy package name is ${{env.DEPLOY_PACKAGE_NAME }}"
         
