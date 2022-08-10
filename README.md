@@ -2,6 +2,5 @@
 
 
 Status of Last Deployment:<br>
-![example event parameter](https://github.com/RiKeRjava/Script/workflows/main.yml/badge.svg?event=push)
-
+https://github.com/RiKeRjava/Script/actions/workflows/My-GitHubActions-Basics/badge.svg
 Copyleft by Roman Miatlitski.
