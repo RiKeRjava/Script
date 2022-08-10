@@ -25,7 +25,7 @@ jobs:
           echo "Applications name: ${{env.APPLICARIONS_NAME }}"
           
       - name: List current folder
-        run: ls-la
+        run: ls -la
         
   my_deploy:
     runs-on: ubuntu-latest
