@@ -2,5 +2,5 @@
 
 
 Status of Last Deployment:<br>
-https://github.com/RiKeRjava/Script/actions/workflows/My-GitHubActions-Basics/badge.svg
+![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
 Copyleft by Roman Miatlitski.
